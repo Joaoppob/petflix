@@ -15,7 +15,7 @@ body {
       rgba(0, 0, 0, 0.2) 25%,
       rgba(0, 0, 0, 0.8) 65%
     ),
-    url(./src/assets/img/petflix-bg.jpg) center/cover;
+    url("@/assets/img/petflix-bg.jpg") center/cover no-repeat;
   color: white;
   transition: background-color 0.5s, color 0.5s;
 }
