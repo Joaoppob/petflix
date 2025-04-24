@@ -1,0 +1,148 @@
+@use "./core/core" as *;
+@use "sass:color";
+
+.catalogo {
+  text-align: center;
+  padding: 32px 16px;
+  background: $bgLight;
+  transition: background 0.4s ease;
+
+  @include respond-to("md") {
+    padding: 64px 16px;
+  }
+
+  h2 {
+    text-align: center;
+    color: $fonteDark;
+    margin-bottom: 16px;
+    font-size: 22px;
+
+    @include respond-to("md") {
+      margin-bottom: 32px;
+      font-size: 32px;
+      text-align: left;
+    }
+  }
+
+  &-wrapper {
+    max-width: 950px;
+    margin: 0 auto;
+  }
+}
+
+body.dark-mode {
+  .catalogo {
+    background: $bgDark;
+
+    h2 {
+      color: $fonteLight;
+    }
+  }
+
+  .grid-filmes {
+    background: color.scale($bgDark, $lightness: -10.5%);
+
+    h2 {
+      color: $fonteLight;
+    }
+  }
+
+  .filme {
+    background: color.scale($bgDark, $lightness: -22.5%);
+
+    .filme-titulo {
+      color: $fonteLight;
+    }
+
+    &:hover {
+      background: $bgLight;
+      color: $fonteLight;
+
+      .filme-titulo {
+        color: $fonteDark;
+      }
+    }
+  }
+}
+
+.grid-filmes {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+  padding: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: $bgDarkLight;
+  border-radius: 8px;
+  transition: all 0.4s ease;
+
+  @include respond-to("sm") {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to("lg") {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.filme {
+  background-color: rgba($bgDarkLight, 0.5);
+  padding: 32px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  .filme-titulo {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    color: rgba($fonteDark, 0.8);
+  }
+
+  img {
+    height: 260px;
+    object-fit: cover;
+    transition: height 0.4s ease;
+    margin-bottom: 15px;
+    border-radius: 8px;
+  }
+
+  .filme-descricao {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.1s ease, opacity 0.4s ease;
+    font-size: 14px;
+    font-weight: normal;
+    margin-top: 0;
+    color: $fonteDark;
+  }
+
+  &:hover {
+    background: $bgLight;
+    color: $fonteDark;
+
+    img {
+      height: 180px;
+    }
+
+    .filme-titulo {
+      color: $fonteDark;
+    }
+
+    .filme-descricao {
+      max-height: 100px;
+      opacity: 1;
+      margin-top: 8px;
+      color: $fonteDark;
+    }
+  }
+}

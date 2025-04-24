@@ -1,0 +1,236 @@
+@use "./core/core" as *;
+@use "sass:color";
+
+/* Cabeçalho */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: $bgLight;
+  transition: all 0.5s ease;
+}
+
+body.dark-mode header {
+  background: transparent;
+}
+
+.nav_flex {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0px;
+  border-bottom: 1px solid rgba(#333333, 0.6);
+  transition: all 0.5s ease;
+}
+
+.fixed_navBar .nav_flex {
+  padding: 5px 0;
+  background-color: rgba($bgLight, 1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .fixed_navBar .nav_flex {
+  background-color: rgba(#000, 0.6);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  width: 100%;
+  display: block;
+  max-width: 90px;
+  transition: transform 0.5s ease;
+
+  @include respond-to("md") {
+    max-width: 120px;
+  }
+}
+
+.fixed_navBar .logo {
+  transform: scale(0.8);
+}
+
+.nav-desktop {
+  display: none;
+  flex-flow: row nowrap;
+  column-gap: 20px;
+  align-items: center;
+
+  @include respond-to("md") {
+    display: flex;
+  }
+}
+
+.nav-mobile {
+  display: flex;
+  width: 20%;
+  justify-content: flex-end;
+
+  & .nav-mobileButton {
+    body.dark-mode & svg {
+      stroke: color.scale($fonteLight, $lightness: -10.5%);
+    }
+    & svg {
+      max-width: 36px;
+      width: 100%;
+      height: 100%;
+      stroke: color.scale($fonteDark, $lightness: 20.5%);
+
+      &.nav-close {
+        max-width: 24px;
+      }
+    }
+  }
+
+  @include respond-to("md") {
+    display: none;
+  }
+}
+
+.nav-mobileWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  row-gap: 24px;
+  top: 0;
+  left: 600px;
+  right: 0;
+  bottom: 0;
+  background-color: rgba($bgLight, 0.9);
+  z-index: 9999;
+  background: $bgLight;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  padding: 10px;
+  transition: all 0.5s ease;
+
+  @include respond-to("sm") {
+    left: 1000px;
+  }
+
+  &.active {
+    display: flex;
+    left: 0;
+
+    @include respond-to("md") {
+      display: none;
+    }
+  }
+}
+
+body.dark-mode .nav-mobileWrapper {
+  background-color: rgba($bgDark, 1);
+}
+
+nav a {
+  margin: 0 0;
+  text-decoration: none;
+  color: $fonteDark;
+  font-weight: 400;
+  display: inline-block;
+  transition: transform 0.2s ease-in-out, letter-spacing 0.2s ease-in-out;
+
+  &:hover {
+    color: #00c2cb;
+    /* Sua variável $0 */
+    font-weight: bold;
+    transform: scale(1.05);
+    /* Aumenta levemente para dar destaque */
+    letter-spacing: 0.5px;
+    /* Simula a transição do negrito */
+  }
+}
+
+body.dark-mode nav a {
+  color: $fonteLight;
+
+  &:hover {
+    color: #00c2cb;
+  }
+}
+
+.btn-login {
+  background-color: #e50914;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.4s ease, transform 0.3s ease;
+
+  &:hover {
+    background-color: #740107; // tom mais claro para realce
+    transform: scale(1.05); // leve crescimento
+  }
+}
+
+.theme-switch {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.05); // ou tema-claro
+  backdrop-filter: blur(4px);
+  transition: background-color 0.4s ease;
+  border: 1px solid rgba(#535353, 0.5);
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    transform: translate(-50%, -50%) rotate(0deg);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    stroke: currentColor;
+    stroke-width: 2;
+    color: white;
+    pointer-events: none; // ícones não recebem clique
+  }
+
+  .sun {
+    color: #000;
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .moon {
+    color: white;
+    opacity: 0;
+    z-index: 0;
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  &.dark {
+    .sun {
+      opacity: 0;
+      z-index: 0;
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    .moon {
+      opacity: 1;
+      z-index: 1;
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+  }
+}
+
+#scroll-trigger {
+  height: 1px;
+  width: 100%;
+}

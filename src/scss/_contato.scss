@@ -1,0 +1,110 @@
+@use "./core/core" as *;
+@use "sass:color";
+
+.contato {
+  background: $bgLight;
+  color: $fonteDark;
+  padding: 32px 16px;
+  transition: background 0.4s ease;
+
+  @include respond-to("md") {
+    padding: 64px 16px;
+  }
+
+  & h2 {
+    font-size: 22px;
+    margin-bottom: 16px;
+    text-align: center;
+
+    @include respond-to("md") {
+      margin-bottom: 32px;
+      font-size: 32px;
+    }
+  }
+
+  & p {
+    max-width: 600px;
+    margin: 0 auto 32px;
+    text-align: center;
+    line-height: 1.6;
+  }
+}
+
+body.dark-mode .contato {
+  background: $bgDark;
+  color: $fonteLight;
+}
+
+.contato-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-contato {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  label {
+    font-weight: 600;
+  }
+
+  input,
+  textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    resize: none;
+    background: #fff;
+
+    &:focus {
+      outline: none;
+      border-color: $cor-0;
+    }
+  }
+
+  .btn-enviar {
+    background-color: $cor-2;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    font-size: 16px;
+    transition: all 0.5s ease;
+
+    @include respond-to("") {
+      font-size: 22px;
+    }
+
+    &:hover {
+      background-color: color.scale($cor-2, $lightness: -32.5%);
+    }
+  }
+}
+
+.contato-info {
+  margin-top: 32px;
+  text-align: center;
+
+  .btn-whatsapp {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 10px 20px;
+    background: #15b44f;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.2s;
+
+    &:hover {
+      background: #0b7733;
+      transform: scale(1.05);
+    }
+  }
+}
