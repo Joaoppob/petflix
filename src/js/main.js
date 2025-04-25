@@ -1,5 +1,6 @@
 import '../scss/main.scss';
 import './navbarMobile.js';
+import './animation.js';
 import './automaticDarkMode.js';
 import './cta.js';
 import './fixedNavBar.js';
