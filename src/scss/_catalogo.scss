@@ -32,7 +32,8 @@
 
 body.dark-mode {
   .catalogo {
-    background: $bgDark;
+    // background: $bgDark;
+    background: linear-gradient(0deg, rgba($bgDark, 1) 0%, rgba(color.scale($bgDark, $lightness: -90.5%), 1) 100%);
 
     h2 {
       color: $fonteLight;

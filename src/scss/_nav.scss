@@ -20,7 +20,7 @@ body.dark-mode header {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 10px 0px;
+  padding: 8px 0px;
   border-bottom: 1px solid rgba(#333333, 0.6);
   transition: all 0.5s ease;
 }
@@ -32,7 +32,7 @@ body.dark-mode header {
 }
 
 body.dark-mode .fixed_navBar .nav_flex {
-  background-color: rgba(#000, 0.6);
+  background-color: rgba($bgDark, 1);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -43,7 +43,7 @@ body.dark-mode .fixed_navBar .nav_flex {
   transition: transform 0.5s ease;
 
   @include respond-to("md") {
-    max-width: 120px;
+    max-width: 110px;
   }
 }
 
@@ -157,7 +157,7 @@ body.dark-mode nav a {
 .btn-login {
   background-color: #e50914;
   color: white;
-  padding: 10px 15px;
+  padding: 4px 16px;
   border: none;
   cursor: pointer;
   font-weight: bold;

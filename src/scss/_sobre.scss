@@ -1,0 +1,112 @@
+@use "./core/core" as *;
+@use "sass:color";
+
+body.dark-mode .sobre {
+  background: color.scale($bgDark, $lightness: -50.5%);
+
+  .sobre_flex .sobre_flex-item h2 {
+    color: $fonteLight;
+  }
+
+  .sobre_flex .sobre_flex-item p {
+    color: $fonteLight;
+  }
+}
+
+.sobre {
+  padding: 32px 16px;
+  background: $bgLight2; // tom pastel agradável, pode trocar se quiser
+
+  @include respond-to("md") {
+    padding: 64px 16px;
+  }
+
+  .sobre_content {
+    width: 80%;
+    margin: 0 auto;
+
+    @include respond-to("md") {
+      width: 100%;
+      max-width: 950px;
+    }
+  }
+
+  .sobre_flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+
+    .sobre_flex-item {
+      flex: 1 1 45%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      h2 {
+        font-size: 24px;
+        color: $fonteDark;
+        margin-bottom: 10px;
+
+        @include respond-to("md") {
+          font-size: 32px;
+        }
+      }
+
+      p {
+        line-height: 130%;
+        color: $fonteDark;
+        font-size: 18px;
+
+        @include respond-to("md") {
+          font-size: 22px;
+        }
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        object-fit: cover;
+      }
+    }
+
+    // Ordem no DESKTOP
+    .sobre_flex-item:nth-child(1) {
+      order: 1;
+    } // Imagem 1
+    .sobre_flex-item:nth-child(2) {
+      order: 2;
+    } // Texto 1
+    .sobre_flex-item:nth-child(3) {
+      order: 3;
+    } // Texto 2
+    .sobre_flex-item:nth-child(4) {
+      order: 4;
+    } // Imagem 2
+  }
+
+  @media (max-width: 768px) {
+    .sobre_flex {
+      flex-direction: column;
+
+      .sobre_flex-item {
+        flex: 1 1 100%;
+      }
+
+      // Ordem no MOBILE
+      .sobre_flex-item:nth-child(1) {
+        order: 1;
+      } // Imagem 1
+      .sobre_flex-item:nth-child(2) {
+        order: 2;
+      } // Texto 1
+      .sobre_flex-item:nth-child(4) {
+        order: 3;
+      } // Imagem 2
+      .sobre_flex-item:nth-child(3) {
+        order: 4;
+      } // Texto 2
+    }
+  }
+}
