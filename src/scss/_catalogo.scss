@@ -76,9 +76,8 @@
     width: 100%;
     height: 100%;
     border-radius: 12px;
-    background: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.2) 30%, rgba(58, 58, 58, 0.2) 80%, #929292 90%);
-    pointer-events: none; // 🔥 Garante que cliques passem para a imagem ou botões se precisar
     z-index: 1;
+    background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 30%, #0e0500cc 70%, #0e0500 85%);
   }
 
   .cartaz-info {
@@ -86,7 +85,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 30%, rgba(0, 0, 0, 0) 100%);
+    // background: linear-gradient(0deg, rgba(0, 0, 0, 0.6) 30%, rgba(0, 0, 0, 0) 100%);
     padding: 64px 32px;
     box-sizing: border-box;
     border-radius: 0 0 $raio-default $raio-default;
@@ -197,7 +196,7 @@ body.dark-mode {
     background: color.scale($bgDark, $lightness: -10.5%);
 
     .cartaz-gradiente {
-      background: linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.2) 70%, rgb(0, 0, 0) 90%);
+      background: linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.8) 70%, rgb(0, 0, 0) 85%);
     }
 
     & img {
@@ -208,6 +207,9 @@ body.dark-mode {
       background: color.scale($bgDark, $lightness: -30.5%);
     }
 
+    .cartaz-info {
+      background: none;
+    }
     .cartaz-info h3,
     .cartaz-info p {
       color: $fonteLight;
