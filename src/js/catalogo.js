@@ -1,3 +1,17 @@
+// 🖼️ Importando as imagens do projeto diretamente
+import StrangerCats from '@/assets/img/StrangerCats.jpg';
+import BreakingBark from '@/assets/img/BreakingBark.jpg';
+import HouseOfBarks from '@/assets/img/HouseOfBarks.jpg';
+import SherlockBones from '@/assets/img/SherlockBones.jpg';
+
+// Mapeamento de nomes para as imagens processadas pelo Vite
+const imagemMap = {
+    'StrangerCats': StrangerCats,
+    'BreakingBark': BreakingBark,
+    'HouseOfBarks': HouseOfBarks,
+    'SherlockBones': SherlockBones,
+};
+
 const miniaturas = document.querySelectorAll('.miniatura');
 const cartazImg = document.getElementById('cartaz-img');
 const cartazTitulo = document.getElementById('cartaz-titulo');
@@ -6,29 +20,26 @@ const cartazInfo = document.querySelector('.cartaz-info');
 
 miniaturas.forEach(miniatura => {
     miniatura.addEventListener('click', () => {
-        const newImg = miniatura.getAttribute('data-img');
-        const newTitulo = miniatura.getAttribute('data-titulo');
-        const newDescricao = miniatura.getAttribute('data-descricao');
+        const key = miniatura.dataset.img;
+        const newImg = imagemMap[key];
+        const newTitulo = miniatura.dataset.titulo;
+        const newDescricao = miniatura.dataset.descricao;
 
-        // 🔥 Anima o fade-out da imagem
         cartazImg.style.opacity = 0;
         cartazInfo.classList.remove('active');
 
-        // Aguarda a animação de fade-out terminar
         setTimeout(() => {
-            // Atualiza imagem e textos
             cartazImg.src = newImg;
             cartazTitulo.textContent = newTitulo;
             cartazDescricao.textContent = newDescricao;
 
-            // 🔥 Anima o fade-in
             cartazImg.style.opacity = 1;
             cartazInfo.classList.add('active');
-        }, 300); // 300ms para sincronizar bonito com a animação
+        }, 300);
     });
 });
 
-// Quando carregar a página, já ativa o primeiro cartaz
+// Ativa primeiro cartaz
 window.addEventListener('load', () => {
     cartazInfo.classList.add('active');
 });

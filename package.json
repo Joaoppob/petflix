@@ -12,6 +12,7 @@
   "devDependencies": {
     "gh-pages": "^6.3.0",
     "sass-embedded": "^1.87.0",
-    "vite": "^6.2.0"
+    "vite": "^6.2.0",
+    "vite-imagetools": "^7.0.5"
   }
 }
