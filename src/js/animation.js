@@ -2,7 +2,7 @@ const animate = document.querySelectorAll('.animate');
 
 // Configurações do observer
 const options = {
-    threshold: 0.6, // ativa quando 60% do elemento estiver visível
+    threshold: 0.4, // ativa quando 60% do elemento estiver visível
 };
 
 // Função que adiciona a animação

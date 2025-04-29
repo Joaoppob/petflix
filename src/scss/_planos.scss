@@ -14,8 +14,9 @@
 
   h2 {
     font-size: 22px;
-    margin-bottom: 16px;
     transition: all 0.3s ease;
+    width: 80%;
+    margin: 0 auto 16px auto;
 
     @include respond-to("md") {
       margin-bottom: 32px;
@@ -27,9 +28,18 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 30px;
     max-width: 950px;
-    margin: 0 auto 24px auto;
+    margin: 0 auto;
+    width: 80%;
+
+    @include respond-to("md") {
+      justify-content: space-between;
+      width: 90%;
+    }
+
+    @include respond-to("lg") {
+      width: 100%;
+    }
   }
 }
 
@@ -37,13 +47,14 @@
   background-color: $bgLight;
   border-radius: $raio-default;
   padding: 24px;
-  width: 88%;
+  width: 100%;
   position: relative;
   text-align: left;
   transition: all 0.3s ease;
+  margin-bottom: 32px;
 
   @include respond-to("md") {
-    width: 44%;
+    width: 48%;
   }
 
   &:hover {

@@ -7,6 +7,10 @@
   background: $bgLight;
   transition: background 0.4s ease;
 
+  @include respond-to("md") {
+    padding: 64px 16px;
+  }
+
   h2 {
     text-align: center;
     color: $fonteDark;
@@ -17,6 +21,15 @@
   &-wrapper {
     max-width: 950px;
     margin: 0 auto;
+    width: 80%;
+
+    @include respond-to("md") {
+      width: 90%;
+    }
+
+    @include respond-to("lg") {
+      width: 100%;
+    }
   }
 }
 
@@ -32,7 +45,7 @@
 }
 
 .cartaz-principal {
-  flex: 1.3;
+  flex: 1;
   background: $bgDarkLight;
   padding: 0;
   border-radius: $raio-default;
@@ -63,7 +76,7 @@
     width: 100%;
     height: 100%;
     border-radius: 12px;
-    background: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.2) 30%, rgba(58, 58, 58, 0.2) 70%, rgb(82, 82, 82) 90%);
+    background: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.2) 30%, rgba(58, 58, 58, 0.2) 80%, #929292 90%);
     pointer-events: none; // 🔥 Garante que cliques passem para a imagem ou botões se precisar
     z-index: 1;
   }
@@ -166,10 +179,6 @@
   &:hover {
     background: $bgLight;
     height: 200px;
-
-    img {
-      // Nada precisa mudar aqui
-    }
   }
 }
 

@@ -12,6 +12,10 @@
 
   @include respond-to("md") {
     width: 90%;
+  }
+
+  @include respond-to("lg") {
+    width: 100%;
     max-width: 950px;
   }
 }
@@ -20,7 +24,6 @@
   // background: rgba(0, 0, 0, 0.7);
   border-radius: $raio-default;
   width: 100%;
-  max-width: 900px;
   margin-bottom: 35px;
   transition: margin-top 0.5s ease;
   color: $fonteLight;
@@ -35,6 +38,10 @@
     }
 
     @include respond-to("md") {
+      font-size: 64px;
+      text-align: left;
+    }
+    @include respond-to("lg") {
       font-size: 82px;
       text-align: left;
     }
