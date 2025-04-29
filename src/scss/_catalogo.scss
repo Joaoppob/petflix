@@ -7,21 +7,11 @@
   background: $bgLight;
   transition: background 0.4s ease;
 
-  @include respond-to("md") {
-    padding: 64px 16px;
-  }
-
   h2 {
     text-align: center;
     color: $fonteDark;
-    margin-bottom: 16px;
-    font-size: 22px;
-
-    @include respond-to("md") {
-      margin-bottom: 32px;
-      font-size: 32px;
-      text-align: left;
-    }
+    margin-bottom: 32px;
+    font-size: 28px;
   }
 
   &-wrapper {
@@ -30,120 +20,207 @@
   }
 }
 
-body.dark-mode {
-  .catalogo {
-    // background: $bgDark;
-    background: linear-gradient(0deg, rgba($bgDark, 1) 0%, rgba(color.scale($bgDark, $lightness: -90.5%), 1) 100%);
+.catalogo-conteudo {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 
-    h2 {
-      color: $fonteLight;
-    }
+  @include respond-to("md") {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.cartaz-principal {
+  flex: 1.3;
+  background: $bgDarkLight;
+  padding: 0;
+  border-radius: $raio-default;
+  text-align: left;
+  position: relative;
+  overflow: hidden; // 🔥 Garante que nada vaze para fora
+  padding: 16px;
+  transition: all 0.4s ease;
+
+  &:hover {
+    background: color.scale($bgDarkLight, $lightness: -10.5%);
   }
 
-  .grid-filmes {
-    background: color.scale($bgDark, $lightness: -10.5%);
-
-    h2 {
-      color: $fonteLight;
-    }
+  img {
+    margin: 0 auto;
+    width: 100%;
+    display: block;
+    border-radius: $raio-default;
+    transition: opacity 0.2s ease; // 🔥 Animação de fade
+    opacity: 1; // Padrão: visível
+    border: 1px solid color.scale($bgLight, $lightness: -30.5%);
   }
 
-  .filme {
-    background: color.scale($bgDark, $lightness: -22.5%);
+  .cartaz-gradiente {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.2) 30%, rgba(58, 58, 58, 0.2) 70%, rgb(82, 82, 82) 90%);
+    pointer-events: none; // 🔥 Garante que cliques passem para a imagem ou botões se precisar
+    z-index: 1;
+  }
 
-    .filme-titulo {
-      color: $fonteLight;
+  .cartaz-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 30%, rgba(0, 0, 0, 0) 100%);
+    padding: 64px 32px;
+    box-sizing: border-box;
+    border-radius: 0 0 $raio-default $raio-default;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    z-index: 2;
+
+    &.active {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    &:hover {
-      background: $bgLight;
+    h3 {
+      font-size: 22px;
+      margin: 0 0 8px 0;
       color: $fonteLight;
+      font-weight: bold;
 
-      .filme-titulo {
-        color: $fonteDark;
+      @include respond-to("md") {
+        font-size: 48px;
+      }
+    }
+
+    p {
+      font-size: 16px;
+      margin: 0;
+      color: rgba($fonteLight, 0.85);
+
+      @include respond-to("md") {
+        font-size: 18px;
       }
     }
   }
 }
 
-.grid-filmes {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 20px;
-  padding: 16px;
-  max-width: 1000px;
-  margin: 0 auto;
+.miniaturas {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   background: $bgDarkLight;
-  border-radius: 8px;
+  padding: 0;
+  border-radius: $raio-default;
+  padding: 16px;
   transition: all 0.4s ease;
 
-  @include respond-to("sm") {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @include respond-to("lg") {
-    grid-template-columns: repeat(4, 1fr);
+  &:hover {
+    background: color.scale($bgDarkLight, $lightness: -10.5%);
   }
 }
 
-.filme {
-  background-color: rgba($bgDarkLight, 0.5);
-  padding: 32px 16px;
-  border-radius: 8px;
+.miniatura {
+  background: $bgDarkLight;
   cursor: pointer;
-  transition: transform 0.3s ease;
-  position: relative;
   overflow: hidden;
-  height: 380px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-
-  .filme-titulo {
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
-    margin: 0;
-    color: rgba($fonteDark, 0.8);
-  }
+  height: 100px;
+  position: relative; // 🔥 Pra posicionar o título em cima
+  transition: background 0.3s ease, height 0.4s ease;
+  border-radius: $raio-default;
 
   img {
-    height: 260px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    transition: height 0.4s ease;
-    margin-bottom: 15px;
-    border-radius: 8px;
+    object-position: 30% 30%;
+    transition: all 0.4s ease;
+    border-radius: $raio-default;
+    border: 1px solid color.scale($bgLight, $lightness: -30.5%);
   }
 
-  .filme-descricao {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height 0.1s ease, opacity 0.4s ease;
-    font-size: 14px;
-    font-weight: normal;
-    margin-top: 0;
-    color: $fonteDark;
+  .miniatura-titulo {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    padding: 4px 8px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0px 0px 12px rgba(161, 161, 161, 0.301);
+    background-color: rgba(0, 0, 0, 0.548);
+    width: fit-content;
+    border-radius: $raio-default2;
+    text-align: left;
+    opacity: 1;
+    transition: opacity 0.4s ease;
   }
 
   &:hover {
     background: $bgLight;
-    color: $fonteDark;
+    height: 200px;
 
     img {
-      height: 180px;
+      // Nada precisa mudar aqui
+    }
+  }
+}
+
+// Dark Mode adaptado
+body.dark-mode {
+  .catalogo {
+    // background: linear-gradient(0deg, rgba($bgDark, 1) 0%, rgba(color.scale($bgDark, $lightness: -90.5%), 1) 100%);
+    background: $bgDark;
+
+    h2 {
+      color: $fonteLight;
+    }
+  }
+
+  .cartaz-principal {
+    background: color.scale($bgDark, $lightness: -10.5%);
+
+    .cartaz-gradiente {
+      background: linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.2) 70%, rgb(0, 0, 0) 90%);
     }
 
-    .filme-titulo {
-      color: $fonteDark;
+    & img {
+      border: 1px solid color.scale($bgDark, $lightness: 20.5%);
     }
 
-    .filme-descricao {
-      max-height: 100px;
-      opacity: 1;
-      margin-top: 8px;
-      color: $fonteDark;
+    &:hover {
+      background: color.scale($bgDark, $lightness: -30.5%);
+    }
+
+    .cartaz-info h3,
+    .cartaz-info p {
+      color: $fonteLight;
+    }
+  }
+
+  .miniaturas {
+    background: color.scale($bgDark, $lightness: -10.5%);
+
+    &:hover {
+      background: color.scale($bgDark, $lightness: -30.5%);
+    }
+  }
+  .miniatura {
+    background: color.scale($bgDark, $lightness: -22.5%);
+
+    & img {
+      border: 1px solid color.scale($bgDark, $lightness: 20.5%);
+    }
+
+    &:hover {
+      background: $bgLight;
     }
   }
 }

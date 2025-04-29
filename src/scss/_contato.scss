@@ -53,7 +53,7 @@ body.dark-mode .contato {
   textarea {
     padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 8px;
+    border-radius: $raio-default;
     font-family: inherit;
     font-size: 1rem;
     resize: none;
@@ -70,7 +70,7 @@ body.dark-mode .contato {
     color: white;
     border: none;
     padding: 12px 20px;
-    border-radius: 8px;
+    border-radius: $raio-default;
     cursor: pointer;
     font-weight: bold;
     width: 100%;
@@ -97,7 +97,7 @@ body.dark-mode .contato {
     padding: 10px 20px;
     background: #15b44f;
     color: #fff;
-    border-radius: 8px;
+    border-radius: $raio-default;
     text-decoration: none;
     font-weight: bold;
     transition: all 0.2s;

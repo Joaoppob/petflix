@@ -35,7 +35,7 @@
 
 .plano-card {
   background-color: $bgLight;
-  border-radius: 8px;
+  border-radius: $raio-default;
   padding: 24px;
   width: 88%;
   position: relative;
@@ -68,7 +68,7 @@
     z-index: 3;
     margin-bottom: 24px;
     border: 1px solid color.scale($bgDark, $lightness: 10.5%);
-    border-radius: 8px;
+    border-radius: $raio-default;
   }
 
   li {
@@ -92,7 +92,7 @@
 
   &.destaque {
     position: relative;
-    border-radius: 8px;
+    border-radius: $raio-default;
     z-index: 1;
 
     &::before {
@@ -107,7 +107,7 @@
       background-position: 0% 0%;
       animation: animaPlano 6s ease-in-out infinite;
       z-index: 0;
-      border-radius: 8px;
+      border-radius: $raio-default;
     }
 
     &::after {
@@ -119,7 +119,7 @@
       bottom: 3px;
       background-color: $bgLight;
       z-index: 1;
-      border-radius: 8px;
+      border-radius: $raio-default;
       transition: all 0.3s ease;
     }
   }
@@ -146,7 +146,7 @@
   color: white;
   border: none;
   padding: 12px 20px;
-  border-radius: 8px;
+  border-radius: $raio-default;
   cursor: pointer;
   font-weight: bold;
   width: 100%;

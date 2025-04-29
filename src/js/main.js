@@ -4,6 +4,7 @@ import './animation.js';
 import './automaticDarkMode.js';
 import './cta.js';
 import './fixedNavBar.js';
+import './catalogo.js';
 
 console.log('JS carregado com sucesso!');
 

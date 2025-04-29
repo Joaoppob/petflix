@@ -161,7 +161,7 @@ body.dark-mode nav a {
   border: none;
   cursor: pointer;
   font-weight: bold;
-  border-radius: 5px;
+  border-radius: $raio-default2;
   font-size: 16px;
   transition: background-color 0.4s ease, transform 0.3s ease;
 
